@@ -19,7 +19,7 @@ The study evaluates multiple classical machine learning models and incorporates 
 # Repository Structure
 
 ```bash
-DSE_MARKET_STRESS/
+Experiment_v2/
 │
 ├── Models/
 │   ├── Decision_Tree.ipynb
