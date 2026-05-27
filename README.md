@@ -1,115 +1,139 @@
-# DSE Market Stress Prediction using Ensemble Meta-Learning
+# DSE Market Stress Prediction using Machine Learning
 
-This project predicts **market stress and crash risk in the Dhaka Stock Exchange (DSE)** using supervised machine learning and explainable AI techniques. Instead of predicting stock prices, the system focuses on identifying **high-risk, high-volatility, or crash days**, which is more useful for market risk monitoring and financial analysis.
+This project presents a machine learning-based framework for predicting market stress conditions in the Dhaka Stock Exchange (DSE) using historical financial data collected from 2008 to 2022. The framework classifies trading days into three market conditions: **Normal**, **High Volatility**, and **Crash**. The proposed approach focuses on identifying market stress patterns and rare crash events to support financial risk analysis and market monitoring.
 
-The workflow includes **data preprocessing, feature engineering, multiple machine learning models, an ensemble meta-learning approach, and model explainability using LIME**.
-
----
-
-## Project Objectives
-
-- Detect **market stress and crash risk**
-- Compare performance of multiple ML models
-- Improve prediction using **ensemble meta-learning**
-- Provide **explainability** using LIME feature analysis
+The study evaluates multiple classical machine learning models and incorporates explainable AI techniques to improve model interpretability and transparency.
 
 ---
 
-## Methodology
+# Project Objectives
 
-### 1. Data Processing & Feature Engineering
-The dataset is processed and enhanced with engineered features relevant to financial market behavior, such as:
+- Predict market stress conditions in the Dhaka Stock Exchange
+- Detect high-volatility and crash events
+- Compare the performance of multiple machine learning models
+- Analyze influential financial indicators
+- Improve interpretability using explainable AI techniques
 
-- Daily return
-- High–Low price spread
-- Intraday volatility
-- Volume change percentage
-- Trade change percentage
-- Price gap
-- Rolling volatility
-- Momentum-based indicators
+---
+
+# Repository Structure
+
+```bash
+DSE_MARKET_STRESS/
+│
+├── Models/
+│   ├── Decision_Tree.ipynb
+│   ├── Random_Forest.ipynb
+│   ├── Extra_Trees.ipynb
+│   ├── logistic_Regression.ipynb
+│   └── xgboost.ipynb
+│
+├── data_engineering.ipynb
+├── error_analysis.ipynb
+└── statistical_testing.ipynb
+```
+
+---
+
+# Methodology
+
+## 1. Data Engineering
+
+Historical stock market data from 2008 to 2022 is processed through multiple preprocessing stages, including:
+
+- Data cleaning
+- Missing value handling
+- Feature normalization
+- Statistical feature generation
+- Market stress labeling
+
+Several financial indicators and engineered features are extracted, including:
+
+- Daily Return
+- Intraday Volatility
+- High–Low Price Spread
+- Rolling Volatility
+- Volume Change Percentage
+- Trade Change Percentage
+- Momentum Indicators
+- Price Gap Features
+
+Notebook:
+```bash
+data_engineering.ipynb
+```
+
+---
+
+## 2. Market Stress Labeling
+
+A three-class target variable is constructed to classify trading days into:
+
+- Normal Market
+- High Volatility
+- Crash
+
+The labeling strategy is based on statistically derived stock-specific thresholds using daily return and intraday volatility measurements.
+
+---
+
+## 3. Machine Learning Models
+
+The following machine learning models are trained and evaluated:
+
+- Decision Tree
+- Random Forest
+- Extra Trees
+- Logistic Regression
+- XGBoost
+
+The models are designed to identify different market stress conditions and rare crash events from historical market behavior.
 
 Location:
-```
-Data Processing/
-```
-
-Notebooks:
-- `data_processing_and_feature_engineering.ipynb`
-- `final_dataset_analysis.ipynb`
-
----
-
-### 2. Machine Learning Models
-
-Four supervised machine learning models were trained and evaluated:
-
-- **Logistic Regression**
-- **Random Forest**
-- **XGBoost**
-- **Extra Trees**
-
-Location:
-```
+```bash
 Models/
 ```
 
-Notebooks:
-- `logistic_Regression.ipynb`
-- `Random_Forest.ipynb`
-- `xgboost.ipynb`
-- `Extra_Trees.ipynb`
-
 ---
 
-### 3. Ensemble Meta-Learning
+## 4. Performance Evaluation
 
-To improve prediction performance, the outputs of the base models are combined using a **meta-learning approach**.
+Model performance is evaluated using several classification metrics, including:
 
-Process:
-1. Train base models.
-2. Extract prediction probabilities from each model.
-3. Use these probabilities as **input features for a Logistic Regression meta-model**.
-4. The meta-model produces the **final prediction**.
+- Accuracy
+- Balanced Accuracy
+- Precision
+- Recall
+- F1-score
+- Confusion Matrix
+
+Experimental results show that XGBoost achieves the best overall performance with strong crash detection capability, while Random Forest and Logistic Regression also provide competitive results.
 
 Notebook:
-```
-Models/Meta_Learning.ipynb
-```
-
----
-
-### 4. Explainable AI (LIME)
-
-To interpret model predictions, **LIME (Local Interpretable Model-Agnostic Explanations)** is used.
-
-This allows:
-- Understanding **which features influence predictions**
-- Explaining **individual high-risk or crash predictions**
-- Providing both **local and global feature insights**
-
----
-
-## Project Structure
-
-```
-DSE_MARKET_STRESS
-│
-├── Data Processing
-│   ├── data_processing_and_feature_engineering.ipynb
-│   └── final_dataset_analysis.ipynb
-│
-└── Models
-    ├── logistic_Regression.ipynb
-    ├── Random_Forest.ipynb
-    ├── xgboost.ipynb
-    ├── Extra_Trees.ipynb
-    └── Meta_Learning.ipynb
+```bash
+error_analysis.ipynb
 ```
 
 ---
 
-## Technologies Used
+## 5. Statistical Testing and Explainability
+
+Statistical testing and explainable AI techniques are used to analyze model behavior and feature importance.
+
+The framework helps:
+- Identify influential financial indicators
+- Interpret model predictions
+- Analyze market crash patterns
+- Improve transparency for financial decision-making
+
+Notebook:
+```bash
+statistical_testing.ipynb
+```
+
+---
+
+# Technologies Used
 
 - Python
 - Pandas
@@ -117,17 +141,16 @@ DSE_MARKET_STRESS
 - Scikit-learn
 - XGBoost
 - Matplotlib
-- LIME
+- Seaborn
 
 ---
 
-## Key Concepts Used
+# Key Concepts
 
+- Financial Market Stress Prediction
 - Supervised Machine Learning
-- Feature Engineering
-- Ensemble Learning
-- Meta Learning (Stacking)
+- Financial Feature Engineering
+- Multi-Class Classification
 - Explainable AI (XAI)
-- Financial Risk Prediction
-
----
+- Financial Risk Analysis
+- Market Crash Detection
